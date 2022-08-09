@@ -1,1 +1,1 @@
-# myjs30
+pratise jacascript 30
