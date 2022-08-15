@@ -1,0 +1,51 @@
+html {
+    background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
+    background-size: cover;
+    text-align: center;
+    font-size: 10px;
+}
+
+body {
+    margin: 0;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.clock {
+    border: 20px solid white;
+    border-radius: 50%;
+    width: 30rem;
+    height: 30rem;
+    margin: auto;
+    position: relative;
+    padding: 2rem;
+    /* 设置padding的目的是为了方便设置指针长度
+        clock-face的大小是clcok的content大小，不包括padding
+        所以hand是clock-face的一半宽度，就是说它和钟的白圈
+        会有这里的padding的间距
+    */
+    box-shadow:
+        0 0 0 4px rgba(0,0,0,0.1),
+        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 10px black,
+        0 0 10px rgba(0,0,0,0.2);
+}
+.clock-face {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-3px); /* account for the height of the clock hands */
+  }
+.hand {
+    background-color: black;
+    width: 50%;
+    top:50%;
+    height: 0.5rem;
+    position: absolute;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    transition-timing-function: cubic-bezier(0.09, 0.44, 0.91, 1.29);
+}
+
