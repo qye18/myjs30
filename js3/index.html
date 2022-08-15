@@ -6,45 +6,31 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <h1>Update CSS Variables with <span class="js">JS</span></h1>
+        <h1>Update CSS Variables with <span class="hl">JS</span></h1>
         <div class="controls">
             <label for="spacing">Spacing: </label>
-            <input id="spacing" type="range" min="10" max="200" value="10" />
+            <input id="spacing" type="range" min="10" max="200" value="10" data-px="px" />
 
             <label for="blur">Blur: </label>
-            <input id="blur" type="range" min="0" max="25" value="10" />
+            <input id="blur" type="range" min="0" max="25" value="10" data-px="px" />
 
-            <label for="color">Base Color </label>
-            <input id="color" type="color" value="#ffc600" />
+            <label for="base">Base Color </label>
+            <input id="base" type="color" value="#ffc600" />
         </ul>
         <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
         
     </body>
     <script>
-        const spacing = document.getElementById('spacing');
-        const blurs = document.getElementById('blur');
-        const base = document.getElementById('color');
-        const controls = document.querySelector('.controls');
-        const js = document.querySelector('.js');
-        let image = document.querySelector('img');
-        spacing.oninput = function(e) {
-            // console.log(e);
-            let newSpacing= this.value;
-            let newColor = base.value;
-            let newBlur = blurs.value;
-            image.style.boxShadow = `0px 0px 0px ${newSpacing}px ${newColor}`;
+        let inputs = document.querySelectorAll('.controls input');
+        
+        function UpdateControls() {
+            console.log(this);
+            let suffix = this.dataset.px || '';
+            document.body.style.setProperty(`--${this.id}`,this.value + suffix);
         }
-        base.oninput = function(e) {
-            let newColor = this.value;
-            let newBlur = blurs.value;
-            let newSpacing = spacing.value;
-            js.style.color = newColor;
-            image.style.boxShadow = `0px 0px 0px ${newSpacing}px ${newColor} `;
-        }
-        blurs.oninput = function(e) {
-            let newBlur = this.value;
-            image.style.filter = `blur(${newBlur}px)`;
-        }
+
+        inputs.forEach(value => value.addEventListener('change', UpdateControls));
+        inputs.forEach(value => value.addEventListener('mousemove', UpdateControls));
     
     
     </script>
