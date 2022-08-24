@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type Ahead</title>
+    <style>
+        html {font-size: 10px;}
+
+        body {
+            text-align: center;
+            background-color: #ffc600;
+        }
+        form {
+            margin: 50px auto;
+        }
+        .region {
+            color: rgb(61, 55, 55);
+            font-size: 4rem;
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 2%;
+            border: 8px solid #F7F7F7;
+            outline: none;
+            position: relative;
+            top: 5px;
+            z-index: 2;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            position: relative;
+            background: white;;
+            border: 1px solid rgb(221, 210, 210);
+            color: rgb(68, 63, 63);
+            font-size: 2rem;
+            padding: 2rem 1rem;
+            text-align: left;
+            font-weight: lighter;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
+            list-style: none;
+            width: 400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            text-transform: capitalize;
+        }
+       
+        .hl {
+            background-color: rgb(255, 208, 0);
+        }
+        
+.suggestions li:nth-child(even) {
+  transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
+  background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
+}
+
+.suggestions li:nth-child(odd) {
+  transform: perspective(100px) rotateX(-3deg) translateY(3px);
+  background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
+}
+    </style>
+</head>
+<body>
+    <form>
+        <input class="region" type="text" placeholder="City or State" />
+        <ul class="suggestions">
+        <li>Filter For A City</li>
+        <li>Or A State</li>
+        </ul>
+    </form>
+    <!-- <script> -->
+       
+    <!-- </script> -->
+    <script src="script.js"></script>
+</body>
+</html>

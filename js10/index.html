@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hold Shift to Ckeck Items</title>
+    <style>
+        html {
+            background: rgb(255, 196, 0);
+            font-size: 20px;
+            color: rgb(75, 72, 67);
+        }
+        
+        .list {
+            background: white;
+            width: 400px;
+            margin: 50px auto;
+            border-radius: 1%;
+            box-shadow: 10px 10px 0 0 rgba(160, 158, 153, 0.3);
+            padding: 0;
+        }
+      
+        .item {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(165, 160, 150, 0.2);
+        }
+        
+        p {
+            margin: 0;
+            font-family: 'helvetica neue';
+            font-weight: 200;
+            padding: 20px;
+            border-left: 1px solid rgba(102, 99, 93, 0.2);
+            flex: 1;
+        }
+        
+        input[type="checkbox"] {
+            margin: 20px;
+        }
+      
+        input:checked + p {
+            background-color: #f9f9f9;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <ul class="list">
+        <li class="item"><input type="checkbox" /><p>This is an inbox layout.</p></li>
+        <li class="item"><input type="checkbox" /><p>Check one item</p></li>
+        <li class="item"><input type="checkbox" /><p>Hold down your Shift key</p></li>
+        <li class="item"><input type="checkbox" /><p>Check a lower item</p></li>
+        <li class="item"><input type="checkbox" /><p>Everything in between should also be set to checked</p></li>
+        <li class="item"><input type="checkbox" /><p>Try do it without any libraries</p></li>
+        <li class="item"><input type="checkbox" /><p>Just regular JavaScript</p></li>
+        <li class="item"><input type="checkbox" /><p>Good Luck!</p></li>
+        <li class="item"><input type="checkbox" /><p>Don't forget to tweet your result!</p></li>
+    </ul>
+    <script>
+
+        let checkboxs = document.querySelectorAll('input');
+        let lastChecked;
+        function mutipleSelect(e) {
+            // console.log(e);
+           let inBetween = false;
+           if (e.shiftKey && this.checked) {
+            checkboxs.forEach( checkbox => {
+                if (checkbox === this || checkbox === lastChecked) {
+                    inBetween = !inBetween;
+                    // 一旦找到开始，inbetween就为true
+                    // 中间的不会改变inbetween的值，所以一直为true
+                    // 直到遇到this和lastChecked中的另一个
+                }
+                if (inBetween) {
+                    checkbox.checked = true;
+                }
+            })
+           }
+
+           lastChecked = this;
+            
+        }
+
+        checkboxs.forEach( checkbox => checkbox.addEventListener('click',mutipleSelect));
+    </script>
+</body>
+</html>

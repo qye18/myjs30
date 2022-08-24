@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+</head>
+<body>
+    <canvas id="draw" width="800" height="800"></canvas>
+    <script>
+        let canvas = document.querySelector("#draw");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        ctx.strokeStyle = 'red';
+        ctx.lineWidth = 100;
+        ctx.lineCap = 'round';
+        
+        let x = 0;
+        let y = 0;
+        let color = 0; 
+        let direction = true;
+        
+        function drawCanvas(e) {
+            
+            if (!isDrawing) return;
+            // console.log(e.offsetX+','+e.offsetY);
+            ctx.strokeStyle = `hsl(${color},100%,50%)`;
+            ctx.beginPath();
+            ctx.moveTo(x,y);
+            ctx.lineTo(e.offsetX,e.offsetY);
+            ctx.stroke();
+
+            x = e.offsetX;
+            y = e.offsetY;
+            color = (color+1) % 360;
+            if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+                direction = !direction;
+            }
+            if (direction) {
+                ctx.lineWidth++;
+            } else {
+                ctx.lineWidth--;
+            }
+        }
+        canvas.addEventListener('mousemove',drawCanvas);
+        canvas.addEventListener('mousedown',(e) => {
+            isDrawing = true;
+            x = e.offsetX;
+            y = e.offsetY;
+        });
+        canvas.addEventListener('mouseup', () => isDrawing = false);
+    </script>
+</body>
+</html>

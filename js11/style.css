@@ -1,0 +1,113 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #7c1599 0%,#921099 48%,#7e4ae8 100%);
+    background-size: cover;
+    user-select: none;
+}
+.videoBox {
+    margin:250px auto;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0px 0px 0px 5px rgba(38, 35, 41, 0.2);
+    padding: 0;
+}
+.videoBox:fullscreen {
+    max-width: none;
+    width: 100%;
+  }
+video {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.controls {
+    width: 100%;
+    position: absolute;
+    bottom: -40px;
+    justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    transition: all 0.3s linear;
+}
+.controls > * { flex: 1;}
+.showControls {
+    bottom: 10px;
+}
+
+.controls *:hover {cursor: pointer;}
+
+.progressBar {
+    flex: 10;
+    display: flex;
+    flex-basis: 100%;
+    padding: 0;
+    position: relative;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 15px;
+    background: rgba(38, 35, 41, 0.5);
+}
+
+.currentProgressPos {
+    flex-basis: 100px;
+    position: absolute;
+    width: 0;
+    height: 15px;
+    left: 0;
+    background: rgb(243, 189, 12);
+}
+
+.playButton {
+    height: 0;
+    border-width: 8px;
+}
+input[type='range'] { flex:5; margin-right: 15px;}
+input[type='range']::-webkit-slider-runnable-track {
+    border-radius: 0px;
+}
+button {
+    font-size: 10px;
+    background:none;
+    border: none;
+    color: white;
+}
+input[type=range] {
+    -webkit-appearance: none;
+    background: transparent;
+  }
+  
+  input[type=range]:focus {
+    outline: none;
+  }
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
+    background: rgba(255,255,255,0.8);
+    border-radius: 1.3px;
+    border: 0.2px solid rgba(1, 1, 1, 0);
+  }
+  
+  input[type=range]::-webkit-slider-thumb {
+    height: 15px;
+    width: 15px;
+    border-radius: 50px;
+    background: #ffc600;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -3.5px;
+    box-shadow:0 0 2px rgba(0,0,0,0.2);
+  }
+  
+  input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #bada55;
+  }
+  
